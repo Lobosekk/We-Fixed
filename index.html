@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>We&Fixed – Expresní opravy a výkup telefonů</title>
+    <meta name="description" content="Rychlé a spolehlivé opravy mobilních telefonů a férový výkup starých zařízení. Specializujeme se na iPhone, Samsung, Huawei a další značky.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* CSS Variables for a strict Black-Red palette */
+        :root {
+            --color-black: #000000;
+            --color-dark-grey: #1a1a1a;
+            --color-light-grey: #333333;
+            --color-red: #E74C3C; /* Základní, výrazná červená */
+            --color-light-red: #FF6B6B; /* Světlejší červená pro hover/akcent */
+            --color-white: #FFFFFF; /* Čistá bílá pro text na tmavém pozadí */
+            --color-text-on-dark: #CCCCCC; /* Světlejší šedá pro méně důležitý text */
+        }
+
+        /* Základní reset a box-sizing */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: var(--color-text-on-dark);
+            background-color: var(--color-black); /* Čistě černé pozadí */
+            scroll-behavior: smooth;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- Hlavička a Navigace --- */
+        header {
+            background-color: var(--color-dark-grey); /* Tmavě šedá hlavička */
+            color: var(--color-white);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.7);
+            border-bottom: 1px solid var(--color-light-grey);
+        }
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5em;
+            font-weight: 700;
+            color: var(--color-red); /* Logo v červené */
+            text-decoration: none;
+            margin: 0;
+            letter-spacing: -1px;
+            transition: color 0.3s ease;
+        }
+        .logo:hover {
+            color: var(--color-light-red);
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 30px;
+        }
+        nav a {
+            color: var(--color-white);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 10px 15px;
+            transition: all 0.3s ease;
+            position: relative;
+            font-size: 1.05em;
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0%;
+            height: 3px;
+            background-color: var(--color-red);
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            transition: width 0.3s ease-out;
+        }
+        nav a:hover::after,
+        nav a.active::after {
+            width: 100%;
+        }
+
+        /* --- Hero sekce (Úvodní banner) --- */
+        .hero {
+            /* Můžete zkusit čistě černý background nebo tmavší překrytí */
+            background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url('https://images.unsplash.com/photo-1542393545-10d5c816558e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1NzgyMzV8MHwxfHNlYXJjaHw0fHwaG9uZSUyMHJlcGFpcnwxfGVufDB8fHx8MTcwNDQwNDcxM3ww&ixlib=rb-4.0.3&q=80&w=1080') no-repeat center center/cover;
+            background-color: var(--color-black); /* Fallback pro jistotu */
+            color: var(--color-white);
+            text-align: center;
+            padding: 150px 20px;
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            animation: fadeIn 1.5s ease-out;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.7);
+        }
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 4.5em;
+            margin-bottom: 25px;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
+            animation: slideInUp 1s ease-out;
+            color: var(--color-white); /* Bílý nadpis */
+        }
+        .hero p {
+            font-size: 2em;
+            margin-bottom: 50px;
+            max-width: 900px;
+            animation: slideInUp 1.2s ease-out;
+            font-weight: 300;
+            color: var(--color-text-on-dark);
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 30px;
+            animation: popIn 1.5s ease-out;
+        }
+        .btn {
+            background-color: var(--color-red);
+            color: var(--color-white);
+            padding: 20px 45px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.3em;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border: 2px solid transparent;
+        }
+        .btn:hover {
+            background-color: var(--color-light-red);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.8);
+        }
+        .btn.secondary {
+            background-color: transparent;
+            color: var(--color-red);
+            border: 2px solid var(--color-red);
+        }
+        .btn.secondary:hover {
+            background-color: var(--color-red);
+            color: var(--color-white);
+            border-color: var(--color-light-red);
+        }
+
+        /* --- Sekce obecně --- */
+        section {
+            padding: 80px 0;
+            margin-bottom: 30px;
+            background-color: var(--color-dark-grey); /* Tmavší pozadí sekcí */
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            border: 1px solid var(--color-light-grey);
+        }
+        section.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        section h2 {
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.2em;
+            color: var(--color-red); /* Nadpisy v červené */
+            margin-bottom: 50px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        section h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 5px;
+            background-color: var(--color-light-red);
+            border-radius: 3px;
+        }
+
+        /* --- Služby --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+        .service-item {
+            background-color: var(--color-black); /* Černá pro položky */
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 280px;
+            border: 1px solid var(--color-light-grey);
+        }
+        .service-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.8);
+            background-color: #330000; /* Velmi tmavě červená/černá s nádechem červené */
+        }
+        .service-item .icon {
+            font-size: 4em;
+            color: var(--color-red);
+            margin-bottom: 20px;
+            transition: color 0.3s ease;
+        }
+        .service-item:hover .icon {
+            color: var(--color-light-red);
+        }
+        .service-item h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--color-white);
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+        .service-item p {
+            font-size: 1.15em;
+            color: var(--color-text-on-dark);
+        }
+
+        /* --- Jak to funguje sekce (Process) --- */
+        .process-steps {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 40px;
+            text-align: center;
+        }
+        .step {
+            flex: 1;
+            min-width: 280px;
+            max-width: 350px;
+            background-color: var(--color-dark-grey); /* Tmavě šedá pro kroky */
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            border: 1px solid var(--color-light-grey);
+        }
+        .step:hover {
+            transform: translateY(-8px);
+            background-color: #330000; /* Tmavě červená pro hover */
+        }
+        .step .step-number {
+            font-size: 4em;
+            font-weight: 700;
+            color: rgba(231, 76, 60, 0.1); /* Transparentní číslo */
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 1;
+        }
+        .step h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--color-white);
+            font-size: 2em;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 2;
+        }
+        .step p {
+            color: var(--color-text-on-dark);
+            font-size: 1.1em;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* --- Formulářové sekce a taby --- */
+        .form-section {
+            background-color: var(--color-black); /* Černé pozadí pro celou sekci formuláře */
+            padding: 80px 0;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.7);
+            margin-bottom: 30px;
+            border: 1px solid var(--color-light-grey);
+        }
+        .form-section h2 {
+            color: var(--color-red);
+            margin-bottom: 60px;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--color-light-grey);
+        }
+
+        .tab-button {
+            background-color: var(--color-dark-grey);
+            color: var(--color-white);
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.3em;
+            font-weight: bold;
+            cursor: pointer;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            outline: none;
+            flex-grow: 1;
+            text-align: center;
+            max-width: 350px;
+            margin: 0 5px;
+            box-shadow: 0 -3px 8px rgba(0,0,0,0.3);
+        }
+
+        .tab-button:hover {
+            background-color: var(--color-light-grey);
+        }
+
+        .tab-button.active {
+            background-color: var(--color-red);
+            color: var(--color-white);
+            border-bottom: 3px solid var(--color-red); /* Enhanced active state */
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.5);
+        }
+
+        .form-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--color-dark-grey); /* Tmavě šedé pozadí pro vnitřek formuláře */
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            border: 1px solid var(--color-light-grey);
+        }
+
+        .form-panel {
+            display: none; /* Skryje všechny panely formulářů ve výchozím nastavení */
+        }
+        .form-panel.active {
+            display: block; /* Zobrazí aktivní panel */
+            animation: fadeIn 0.5s ease-out; /* Přidáme animaci pro plynulý přechod */
+        }
+
+        .form-wrapper label {
+            display: block;
+            margin-bottom: 12px;
+            font-weight: bold;
+            color: var(--color-white); /* Bílý text pro popisky */
+            font-size: 1.1em;
+        }
+        .form-wrapper input[type="text"],
+        .form-wrapper input[type="email"],
+        .form-wrapper input[type="tel"],
+        .form-wrapper textarea,
+        .form-wrapper select {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 25px;
+            border: 1px solid var(--color-light-grey);
+            border-radius: 8px;
+            font-size: 1.05em;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            background-color: var(--color-black); /* Černé pozadí pro inputy */
+            color: var(--color-white); /* Bílý text uvnitř inputů */
+        }
+        .form-wrapper input[type="text"]::placeholder,
+        .form-wrapper input[type="email"]::placeholder,
+        .form-wrapper input[type="tel"]::placeholder,
+        .form-wrapper textarea::placeholder {
+            color: var(--color-text-on-dark); /* Světlejší placeholder text */
+        }
+        .form-wrapper input[type="text"]:focus,
+        .form-wrapper input[type="email"]:focus,
+        .form-wrapper input[type="tel"]:focus,
+        .form-wrapper textarea:focus,
+        .form-wrapper select:focus {
+            border-color: var(--color-red);
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(231, 76, 60, 0.2);
+        }
+        .form-wrapper textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        .form-wrapper button {
+            background-color: var(--color-red);
+            color: var(--color-white);
+            padding: 18px 35px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            text-transform: uppercase;
+        }
+        .form-wrapper button:hover {
+            background-color: var(--color-light-red);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.7);
+        }
+
+        /* Skryté a zobrazené elementy pro dopravu */
+        .shipping-detail {
+            display: none;
+            margin-top: 15px;
+        }
+        .shipping-detail.active {
+            display: block;
+        }
+        .shipping-detail .instructions {
+            font-size: 0.95em;
+            color: var(--color-text-on-dark);
+            margin-bottom: 15px;
+            background-color: var(--color-light-grey);
+            padding: 10px 15px;
+            border-radius: 5px;
+            border: 1px solid #444;
+        }
+        .shipping-detail .instructions a {
+            color: var(--color-light-red);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .shipping-detail .instructions a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- Způsoby dopravy --- */
+        .shipping-options {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            text-align: center;
+        }
+        .shipping-item {
+            background-color: var(--color-dark-grey);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            flex: 1;
+            min-width: 300px;
+            max-width: 400px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--color-light-grey);
+        }
+        .shipping-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.8);
+            background-color: #330000; /* Tmavě červená pro hover */
+        }
+        .shipping-item .icon {
+            font-size: 4em;
+            color: var(--color-red);
+            margin-bottom: 20px;
+        }
+        .shipping-item h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--color-white);
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+        .shipping-item p {
+            color: var(--color-text-on-dark);
+            font-size: 1.1em;
+        }
+
+        /* --- O nás sekce --- */
+        #about p {
+            font-size: 1.2em;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 30px auto;
+            line-height: 1.8;
+            color: var(--color-text-on-dark);
+        }
+        #about p strong {
+            color: var(--color-white);
+        }
+
+        /* --- Kontaktní info (společné) --- */
+        .contact-info-global {
+            text-align: center;
+            margin-top: 60px;
+            padding: 40px;
+            background-color: var(--color-dark-grey);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            margin-bottom: 30px;
+            border: 1px solid var(--color-light-grey);
+        }
+        .contact-info-global h3 {
+            color: var(--color-red);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2em;
+            margin-bottom: 25px;
+        }
+        .contact-info-global p {
+            margin-bottom: 15px;
+            font-size: 1.2em;
+            color: var(--color-text-on-dark);
+        }
+        .contact-info-global p strong {
+            color: var(--color-white);
+        }
+        .contact-info-global a {
+            color: var(--color-red);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        .contact-info-global a:hover {
+            color: var(--color-light-red);
+        }
+        .contact-info-global .icon {
+            margin-right: 10px;
+            color: var(--color-light-red);
+            font-size: 1.3em;
+        }
+
+        /* --- Patička --- */
+        footer {
+            background-color: var(--color-dark-grey);
+            padding: 40px 0;
+            margin-top: 30px;
+            border-top: 1px solid var(--color-light-grey);
+        }
+        footer .container {
+            text-align: center;
+        }
+        .social-links {
+            margin-top: 20px;
+        }
+        .social-links a {
+            color: var(--color-white);
+            text-decoration: none;
+            font-size: 1.8em;
+            margin: 0 15px;
+            transition: color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+        }
+        .social-links a:hover {
+            color: var(--color-red);
+            transform: translateY(-3px);
+        }
+
+        /* --- Klíčové animace (CSS Keyframes) --- */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideInUp {
+            from { transform: translateY(80px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes popIn {
+            from { transform: scale(0.7); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        /* --- Responzivní design pro mobily --- */
+        @media (max-width: 992px) {
+            nav ul {
+                gap: 15px;
+            }
+            nav a {
+                padding: 8px 10px;
+                font-size: 1em;
+            }
+            .hero h1 {
+                font-size: 3.5em;
+            }
+            .hero p {
+                font-size: 1.6em;
+            }
+            .btn {
+                padding: 15px 30px;
+                font-size: 1.1em;
+            }
+            section h2 {
+                font-size: 2.5em;
+            }
+            .service-item, .step, .shipping-item {
+                padding: 30px;
+            }
+            .form-wrapper {
+                padding: 30px;
+            }
+            .tab-button {
+                font-size: 1.1em;
+                padding: 12px 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header .container {
+                flex-direction: column;
+                text-align: center;
+            }
+            nav ul {
+                flex-direction: column;
+                margin-top: 20px;
+                gap: 10px;
+            }
+            nav a {
+                width: 100%;
+                text-align: center;
+            }
+            .hero {
+                padding: 100px 20px;
+            }
+            .hero h1 {
+                font-size: 2.8em;
+            }
+            .hero p {
+                font-size: 1.3em;
+            }
+            .hero-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .btn {
+                width: 90%;
+                margin: 0 auto;
+            }
+            section {
+                padding: 50px 0;
+            }
+            section h2 {
+                font-size: 2em;
+                margin-bottom: 30px;
+            }
+            .services-grid, .process-steps, .shipping-options {
+                grid-template-columns: 1fr;
+            }
+            .service-item, .step, .shipping-item, .form-wrapper {
+                max-width: 95%;
+                margin: 0 auto;
+                padding: 25px;
+            }
+            .form-wrapper button {
+                padding: 15px;
+                font-size: 1em;
+            }
+            .contact-info-global {
+                padding: 30px;
+            }
+            footer {
+                padding: 25px 0;
+            }
+            .social-links a {
+                font-size: 1.6em;
+                margin: 0 12px;
+            }
+            .tabs {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .tab-button {
+                max-width: 100%;
+                margin: 0;
+                border-radius: 8px; /* For mobile, make corners round all around */
+            }
+            .tab-button.active {
+                border-bottom: none; /* No bottom border for active tab on mobile */
+            }
+        }
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 2em;
+            }
+            .hero h1 {
+                font-size: 2.2em;
+            }
+            .hero p {
+                font-size: 1.1em;
+            }
+            .btn {
+                padding: 12px 25px;
+                font-size: 0.95em;
+            }
+            section h2 {
+                font-size: 1.8em;
+            }
+            .service-item, .step, .shipping-item, .form-wrapper {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+    <div class="container">
+        <a href="index.html" class="logo">We&Fixed</a> 
+        <nav>
+    <ul>
+        <li><a href="#home" class="nav-link">Úvod</a></li>
+        <li><a href="#services" class="nav-link">Služby</a></li>
+        <li><a href="#process" class="nav-link">Jak to funguje</a></li>
+        <li><a href="#shipping" class="nav-link">Doprava</a></li>
+        <li><a href="#forms" class="nav-link">Poptávka</a></li>
+        <li><a href="ceník.html" class="nav-link">Ceník</a></li> </ul>
+</nav>
+    </div>
+</header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="content">
+                <h1>Váš telefon. Znovu jako nový!</h1>
+                <p>Expresní opravy a férový výkup mobilních telefonů. Spolehlivě, rychle a s garancí kvality.</p>
+                <div class="hero-buttons">
+                    <a href="#forms" class="btn" onclick="showForm('repair')"><i class="fas fa-hammer"></i> Poptat opravu</a>
+                    <a href="#forms" class="btn secondary" onclick="showForm('buyout')"><i class="fas fa-hand-holding-usd"></i> Poptat výkup</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="container">
+            <h2><i class="fas fa-tools"></i> Naše Služby</h2>
+            <div class="services-grid">
+                <div class="service-item">
+                    <i class="fas fa-mobile-alt icon"></i>
+                    <h3>Servis zařízení</h3>
+                    <p>Komplexní opravy pro všechny značky a modely telefonů a tabletů.</p>
+                </div>
+                 <div class="service-item">
+                    <i class="fas fa-hand-holding-usd icon"></i>
+                    <h3>Výkup zařízení</h3>
+                    <p>Nabídněte nám svůj starý nebo nefunkční telefon. Získáte rychlé a férové ocenění!</p>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-brush icon"></i>
+                    <h3>Čištění zařízení</h3>
+                    <p>Odstranění prachu, nečistot a optimalizace vnitřních komponent pro lepší chod.</p>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-shield-alt icon"></i>
+                    <h3>Lepení tvrzeného skla</h3>
+                    <p>Profesionální aplikace tvrzeného skla pro maximální ochranu vašeho displeje.</p>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 60px; font-size: 1.25em; color: var(--color-white); font-weight: bold;">
+                Specializujeme se na opravy a výkup většiny značek a modelů, včetně **iPhone, Samsung, Huawei, Xiaomi, OnePlus** a další.
+            </p>
+        </section>
+
+        <section id="process" class="container">
+            <h2><i class="fas fa-cogs"></i> Jak to u nás funguje? Jednoduše.</h2>
+            <div class="process-steps">
+                <div class="step">
+                    <span class="step-number">1</span>
+                    <h3>Zvolte službu</h3>
+                    <p>Vyberte si, zda potřebujete opravu nebo chcete prodat zařízení, a vyplňte online formulář.</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">2</span>
+                    <h3>Rychlá diagnostika</h3>
+                    <p>Provedeme bezplatnou diagnostiku problému, nebo férově oceníme vaše zařízení pro výkup.</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">3</span>
+                    <h3>Expresní řešení</h3>
+                    <p>Většinu oprav provedeme na počkání nebo do 24 hodin. Výkup řešíme ihned!</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">4</span>
+                    <h3>Spokojenost zaručena</h3>
+                    <p>Telefon je jako nový, nebo dostanete peníze. Vždy s úsměvem a naší garancí kvality!</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="shipping" class="container">
+            <h2><i class="fas fa-shipping-fast"></i> Pohodlná doprava a předání</h2>
+            <div class="shipping-options">
+                <div class="shipping-item">
+                    <i class="fas fa-people-carry-box icon"></i>
+                    <h3>Osobní předání</h3>
+                    <p>Dohodněte si s námi flexibilní termín a místo osobního předání či vyzvednutí zařízení.</p>
+                </div>
+                <div class="shipping-item">
+                    <i class="fas fa-truck-fast icon"></i>
+                    <h3>Zaslání kurýrem</h3>
+                    <p>Zašlete nám zařízení spolehlivým kurýrem dle vaší volby. My se o něj postaráme a pošleme zpět!</p>
+                </div>
+                <div class="shipping-item">
+                    <i class="fas fa-box-open icon"></i>
+                    <h3>Zásilkovna / PPL</h3>
+                    <p>Pro nejjednodušší odeslání využijte Zásilkovnu nebo PPL. Opravíme a odešleme zpět.</p>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 40px; font-size: 1.15em; color: var(--color-text-on-dark);">
+                Každý způsob dopravy je pečlivě sjednán individuálně pro vaše maximální pohodlí.
+            </p>
+        </section>
+
+        <section id="about" class="container">
+            <h2><i class="fas fa-info-circle"></i> Kdo jsme We&Fixed?</h2>
+            <p>
+                Jsme dva mladí technici s vášní pro elektroniku a opravování všeho, co má i nemá displej! Ve firmě We&Fixed spojujeme šikovné ruce s chytrou hlavou. Opravujeme telefony, notebooky a další zařízení s důrazem na kvalitu, rychlost a ekologii. Kromě oprav se zaměřujeme i na recyklaci a druhý život techniky, protože technologie si zaslouží víc než jen vyhodit.
+            </p>
+            <p>
+                
+Naším cílem je být nejlepší volbou pro každého, kdo hledá férový přístup, lidský kontakt a profesionální servis.
+            </p>
+            <p>
+
+Opravíme. Zachráníme. Posuneme techniku dál. We&Fixed.
+            </p>
+        </section>
+
+       <section id="forms" class="form-section container">
+            <h2><i class="fas fa-file-invoice"></i> Poptávkové formuláře</h2>
+            <div class="tabs">
+                <button class="tab-button active" data-form="repair" onclick="showForm('repair')">
+                    <i class="fas fa-hammer"></i> Poptávka opravy
+                </button>
+                <button class="tab-button" data-form="buyout" onclick="showForm('buyout')">
+                    <i class="fas fa-hand-holding-usd"></i> Poptávka výkupu
+                </button>
+            </div>
+
+            <div class="form-wrapper">
+                <div id="repair-form-panel" class="form-panel active">
+                    <form action="https://formspree.io/f/mnnvdopg" method="POST" id="repair-form">
+                        <input type="hidden" name="_next" value="https://weandfixed.cz/index.html">
+                        <input type="hidden" name="_autoresponse" value="Dobrý den {{ Jmeno }}, děkujeme za Vaši poptávku opravy na We&Fixed! Váš požadavek jsme přijali a brzy se Vám ozveme s podrobnostmi a cenovou nabídkou. S pozdravem, Tým We&Fixed.">
+                        <p style="text-align: center; margin-bottom: 30px; font-size: 1.1em; color: var(--color-text-on-dark);">
+                            Vyplňte formulář a my se vám obratem ozveme s **bezplatnou cenovou nabídkou** na opravu.
+                        </p>
+
+                        <label for="repair-name"><i class="fas fa-user"></i> Jméno a příjmení:</label>
+                        <input type="text" id="repair-name" name="Jmeno" placeholder="Vaše jméno a příjmení" required>
+
+                        <label for="repair-email"><i class="fas fa-envelope"></i> Váš e-mail:</label>
+                        <input type="email" id="repair-email" name="email" placeholder="vas@email.cz" required>
+                        <input type="hidden" name="_replyto" value="weandfixed@gmail.com">
+                        <input type="hidden" name="_subject" value="Nová poptávka opravy od: {{ email }}">
+
+                        <label for="repair-phone"><i class="fas fa-phone"></i> Telefon:</label>
+                        <input type="tel" id="repair-phone" name="Telefon" placeholder="+420 XXX XXX XXX" required>
+
+                        <label for="repair-device"><i class="fas fa-mobile-alt"></i> Typ zařízení:</label>
+                        <select id="repair-device" name="Typ_zarizeni" required>
+                            <option value="">-- Vyberte zařízení --</option>
+                            <option value="iPhone">iPhone</option>
+                            </select>
+
+                        <label for="repair-model"><i class="fas fa-tag"></i> Model zařízení:</label>
+                        <input type="text" id="repair-model" name="Model_zarizeni" placeholder="Např. iphone 13 Pro" required>
+
+                        <label for="repair-common-faults"><i class="fas fa-triangle-exclamation"></i>Základní vada:</label>
+                        <select id="repair-common-faults" name="Základní_vada">
+                            <option value="">-- Vyberte základní vadu --</option>
+                            <option value="Rozbity_displej">Rozbitý/prasklý displej</option>
+                            <option value="Nefunkcni_baterie">Nefunkční/rychle vybíjející se baterie</option>
+                            <option value="Problemy_nabijeni">Problémy s nabíjením/konektorem</option>
+                            <option value="Poskozeni_vodou">Poškození vodou/tekutinou</option>
+                            <option value="Nefunkcni_tlacitka">Nefunkční tlačítka (power, hlasitost)</option>
+                            <option value="Problemy_kamera">Problémy s kamerou (přední/zadní)</option>
+                            <option value="Problemy_zvuk">Problémy se zvukem (reproduktor, mikrofon)</option>
+                            <option value="Software_problemy">Softwarové problémy (zamrzání, viry)</option>
+                            <option value="Jine">Jiné (specifikujte níže)</option>
+                        </select>
+
+                        <label for="repair-problem"><i class="fas fa-comment-dots"></i> Podrobný popis problému:</label>
+                        <textarea id="repair-problem" name="Popis_problemu" rows="7" placeholder="Prosím, podrobně popište, co se s telefonem stalo a jaké má problémy."></textarea>
+
+                        <label for="repair-shipping-method"><i class="fas fa-truck"></i> Způsob dopravy:</label>
+                        <select id="repair-shipping-method" name="Zpusob_dopravy" required onchange="toggleShippingDetails('repair')">
+                            <option value="">-- Vyberte způsob dopravy --</option>
+                            <option value="Osobni_predani">Osobní předání</option>
+                            <option value="Zasilkovna">Zásilkovna</option>
+                            <option value="PPL_Parcelshop">PPL Parcelshop</option>
+                        </select>
+
+                        <div id="repair-zasilkovna-detail" class="shipping-detail">
+                            <p class="instructions">
+                                   
+                            <label for="repair-zasilkovna-city"><i class="fas fa-city"></i> Město Zásilkovny:</label>
+                         <select id="repair-zasilkovna-city" name="Zasilkovna_mesto" onchange="populatePobocky('repair', 'zasilkovna')" required>
+                                <option value="">-- Vyberte město --</option>
+                                <option value="Žamberk">Žamberk</option>
+                                <option value="Letohrad">Letohrad</option>
+                                <option value="Ústí nad Orlicí">Ústí nad Orlicí</option>
+                            </select>
+
+                            <label for="repair-zasilkovna-pobocka"><i class="fas fa-map-marker-alt"></i> Vyberte pobočku Zásilkovny:</label>
+                            <select id="repair-zasilkovna-pobocka" name="Zasilkovna_pobocka" required>
+                                <option value="">-- Nejprve vyberte město --</option>
+                            </select>
+                        </div>
+
+                        <div id="repair-ppl-detail" class="shipping-detail">
+                            <p class="instructions">
+                             
+                                
+                            <label for="repair-ppl-city"><i class="fas fa-city"></i> Město PPL Parcelshopu:</label>
+                            <select id="repair-ppl-city" name="PPL_mesto" onchange="populatePobocky('repair', 'ppl')" required>
+                                <option value="">-- Vyberte město --</option>
+                                <option value="Žamberk">Žamberk</option>
+                                <option value="Letohrad">Letohrad</option>
+                                <option value="Ústí nad Orlicí">Ústí nad Orlicí</option>
+                            </select>
+
+                            <label for="repair-ppl-pobocka"><i class="fas fa-map-marker-alt"></i> Vyberte PPL Parcelshop:</label>
+                            <select id="repair-ppl-pobocka" name="PPL_pobocka" required>
+                                <option value="">-- Nejprve vyberte město --</option>
+                            </select>
+                        </div>
+
+                        <button type="submit"><i class="fas fa-paper-plane"></i> Odeslat poptávku opravy</button>
+                    </form>
+                </div>
+
+                <div id="buyout-form-panel" class="form-panel">
+                    <form action="https://formspree.io/f/xeokgpej" method="POST" id="buyout-form">
+                        <input type="hidden" name="_next" value="https://weandfixed.cz/index.html">
+                        <input type="hidden" name="_autoresponse" value="Dobrý den {{ Jmeno }}, děkujeme za Vaši poptávku výkupu na We&Fixed! Váš požadavek jsme přijali a brzy se Vám ozveme s podrobnostmi a cenovou nabídkou. S pozdravem, Tým We&Fixed.">
+                        <p style="text-align: center; margin-bottom: 30px; font-size: 1.1em; color: var(--color-text-on-dark);">
+                            Získejte **rychlou a férovou nabídku** na váš starý nebo nefunkční telefon.
+                        </p>
+
+                        <label for="buyout-name"><i class="fas fa-user"></i> Jméno a příjmení:</label>
+                        <input type="text" id="buyout-name" name="Jmeno" placeholder="Vaše jméno a příjmení" required>
+
+                        <label for="buyout-email"><i class="fas fa-envelope"></i> Váš e-mail:</label>
+                        <input type="email" id="buyout-email" name="email" placeholder="vas@email.cz" required>
+                        <input type="hidden" name="_replyto" value="weandfixed@gmail.com">
+                        <input type="hidden" name="_subject" value="Nová poptávka výkupu od: {{ email }}">
+
+                        <label for="buyout-phone"><i class="fas fa-phone"></i> Telefon:</label>
+                        <input type="tel" id="buyout-phone" name="Telefon" placeholder="+420 XXX XXX XXX" required>
+
+                        <label for="buyout-device"><i class="fas fa-mobile-alt"></i> Typ zařízení:</label>
+                        <select id="buyout-device" name="Typ_zarizeni" required>
+                            <option value="">-- Vyberte zařízení --</option>
+                            <option value="iPhone">iPhone</option>
+                            </select>
+
+                      <label for="buyout-model"><i class="fas fa-tag"></i> Model zařízení:</label>
+                        <input type="text" id="buyout-model" name="Model_zarizeni" placeholder="Např. iphone 12" required>
+
+
+                        <label for="buyout-condition"><i class="fas fa-info-circle"></i> Celkový stav zařízení:</label>
+                        <select id="buyout-condition" name="Celkovy_stav_zarizeni" required>
+                            <option value="">-- Vyberte stav --</option>
+                            <option value="Perfektni">Perfektní (jako nové)</option>
+                            <option value="Drobne_odreniny">Drobné odřeniny (běžné opotřebení)</option>
+                            <option value="Praskly_displej_funkcni">Prasklý displej (ale funkční)</option>
+                            <option value="Praskly_displej_nefunkcni">Prasklý displej (nefunkční)</option>
+                            <option value="Nefunkcni_cela">Nefunkční (problémy s deskou, vodou, atd.)</option>
+                            <option value="Jine">Jiné (specifikujte níže)</option>
+                        </select>
+
+                        <label for="buyout-battery-health"><i class="fas fa-battery-half"></i> Kondice baterie (v %):</label>
+                        <input type="number" id="buyout-battery-health" name="Kondice_baterie" placeholder="Např. 85%" min="0" max="100">
+
+                        <label for="buyout-storage"><i class="fas fa-hdd"></i> Velikost úložiště:</label>
+                        <select id="buyout-storage" name="Velikost_uloziste">
+                            <option value="">-- Vyberte úložiště --</option>
+                            <option value="32GB">32 GB</option>
+                            <option value="64GB">64 GB</option>
+                            <option value="128GB">128 GB</option>
+                            <option value="256GB">256 GB</option>
+                            <option value="512GB">512 GB</option>
+                            <option value="1TB">1 TB</option>
+                            <option value="Jine">Jiné</option>
+                        </select>
+
+                        <label for="buyout-notes"><i class="fas fa-comment-dots"></i> Poznámky k zařízení (další vady, příslušenství):</label>
+                        <textarea id="buyout-notes" name="Poznamky" rows="7" placeholder="Např. prasklé zadní sklo, nefunkční fotoaparát, kompletní balení s krabicí a sluchátky."></textarea>
+
+                        <label for="buyout-shipping-method"><i class="fas fa-truck"></i> Způsob dopravy:</label>
+                        <select id="buyout-shipping-method" name="Zpusob_dopravy" required onchange="toggleShippingDetails('buyout')">
+                            <option value="">-- Vyberte způsob dopravy --</option>
+                            <option value="Osobni_predani">Osobní předání</option>
+                            <option value="Zasilkovna">Zásilkovna</option>
+                            <option value="PPL_Parcelshop">PPL Parcelshop</option>
+                        </select>
+
+                        <div id="buyout-zasilkovna-detail" class="shipping-detail">
+                            <p class="instructions">
+                                
+                            <label for="buyout-zasilkovna-city"><i class="fas fa-city"></i> Město Zásilkovny:</label>
+                            <select id="buyout-zasilkovna-city" name="Zasilkovna_mesto" onchange="populatePobocky('buyout', 'zasilkovna')" required>
+                                <option value="">-- Vyberte město --</option>
+                                <option value="Žamberk">Žamberk</option>
+                                <option value="Letohrad">Letohrad</option>
+                                <option value="Ústí nad Orlicí">Ústí nad Orlicí</option>
+                            </select>
+
+                            <label for="buyout-zasilkovna-pobocka"><i class="fas fa-map-marker-alt"></i> Vyberte pobočku Zásilkovny:</label>
+                            <select id="buyout-zasilkovna-pobocka" name="Zasilkovna_pobocka" required>
+                                <option value="">-- Nejprve vyberte město --</option>
+                            </select>
+                        </div>
+
+                        <div id="buyout-ppl-detail" class="shipping-detail">
+                            <p class="instructions">
+                                
+                            <label for="buyout-ppl-city"><i class="fas fa-city"></i> Město PPL Parcelshopu:</label>
+                            <select id="buyout-ppl-city" name="PPL_mesto" onchange="populatePobocky('buyout', 'ppl')" required>
+                                <option value="">-- Vyberte město --</option>
+                                <option value="Žamberk">Žamberk</option>
+                                <option value="Letohrad">Letohrad</option>
+                                <option value="Ústí nad Orlicí">Ústí nad Orlicí</option>
+                            </select>
+
+                            <label for="buyout-ppl-pobocka"><i class="fas fa-map-marker-alt"></i> Vyberte PPL Parcelshop:</label>
+                            <select id="buyout-ppl-pobocka" name="PPL_pobocka" required>
+                                <option value="">-- Nejprve vyberte město --</option>
+                            </select>
+                        </div>
+
+                        <button type="submit"><i class="fas fa-paper-plane"></i> Odeslat poptávku výkupu</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <div class="contact-info-global container">
+            <h3>Potřebujete mluvit s námi?</h3>
+            <p style="font-size: 1.2em; font-weight: bold; color: var(--color-red);">Jsme tu pro vás!</p>
+            <p><i class="fas fa-envelope icon"></i> <strong>E-mail:</strong> <a href="mailto:weandfixed@gmail.com">weandfixed@gmail.com</a></p>
+            <p><i class="fas fa-phone-alt icon"></i> <strong>Telefon: Lubomír Stejskal</strong> <a href="tel:+420604914861">+420 604 914 861</a></p>
+            <p><i class="fas fa-phone-alt icon"></i> <strong>Telefon: Petr Pražák</strong> <a href="tel:+420605009411">+420 605 009 411</a></p>
+            <p style="margin-top: 30px; font-size: 1.15em; color: var(--color-text-on-dark);">
+                Kontaktujte nás telefonicky nebo e-mailem. Rádi vám pomůžeme s jakýmkoli dotazem!
+            </p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p style="color: var(--color-white);">© 2025 We&Fixed. Všechna práva vyhrazena.</p>
+            <div class="social-links">
+                <a href="https://www.facebook.com/profile.php?id=61577212863210&locale=cs_CZ" target="_blank" aria-label="Facebook We&Fixed"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/weandfixed" target="_blank" aria-label="Instagram We&Fixed"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@weandfixed" target="_blank" aria-label="YouTube We&Fixed"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.tiktok.com/@weandfixed" target="_blank" aria-label="TikTok We&Fixed"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+    </footer>
+
+   <script>
+    // Data pro pobočky (zůstávají stejná)
+    const zasilkovnaPobocky = {
+        "Žamberk": [
+            { name: "Zdravá výživa", address: "Nádražní 500, 564 01 Žamberk" },
+            { name: "Vokolo.cz", address: "Nádražní 760, 564 01 Žamberk" }
+        ],
+        "Letohrad": [
+            { name: "Dámský,pánský,dětský textil", address: "Komenského 248, 561 51 Letohrad" },
+            { name: "NATIV styl spol s.r.o", address: "Nový Dvůr 855, 561 51 Letohrad" },
+            { name: "Potraviny Alejka", address: "V Aleji 736, 561 51 Letohrad" },
+            { name: "Supermarket Wanto", address: "Mírová 865, 561 51 Letohrad" }
+        ],
+        "Ústí nad Orlicí": [
+            { name: "TOP Drogerie", address: "Mírové náměstí 23, 562 01 Ústí nad Orlicí" },
+            { name: "INDIGO COMFOR", address: "T.G.Masarykova 127, 562 01 Ústí nad Orlicí" },
+            { name: "Hungaro Delikates", address: "T.G.Masaryka 12, 562 01 Ústí nad Orlicí" },
+            { name: "Agentura CAM s.r.o., TEPVOS spol s.r.o.", address: "Královehradecká 1566, 562 01 Ústí nad Orlicí" },
+            { name: "CZC Resler", address: "Polská 1308, 562 01 Ústí nad Orlicí" },
+            { name: "Potraviny", address: "Třebovská 28, 562 01 Ústí nad Orlicí" }
+        ]
+    };
+
+    const pplPobocky = {
+        "Žamberk": [
+            { name: "Hilby CZ", address: "Masarykovo náměstí 3, 564 01 Žamberk" },
+            { name: "FOTO", address: "Nádražní 1389, 564 01 Žamberk" },
+            { name: "ČS Agro", address: "Zemědělská 1004, 564 01 Žamberk" }
+        ],
+        "Letohrad": [
+            { name: "Zuzika Betex", address: "Václavské náměstí 53, 561 51 Letohrad" },
+            { name: "Ochranné pracovní prostředky Celar new", address: "Družstevní 146, 561 51 Letohrad" },
+            { name: "Nativia", address: "Šedivská 915, 561 51 Letohrad" }
+        ],
+        "Ústí nad Orlicí": [
+            { name: "Hilby CZ", address: "Mírové náměstí 131, 562 01 Ústí nad Orlicí" },
+            { name: "Phone Helper", address: "7.listopadu 77, 562 01 Ústí nad Orlicí" },
+            { name: "CZC Partner", address: "Polská 1308, 562 01 Ústí nad Orlicí" },
+            { name: "EXPERT Elektro", address: "Letohradská 1414, 562 01 Ústí nad Orlicí" }
+        ]
+    };
+
+    // --- FUNKCE PRO OVLÁDÁNÍ FORMULÁŘŮ ---
+    // Musí být na 'window', aby je HTML vidělo (pro onchange, onclick)
+
+    /**
+     * Zobrazuje nebo skrývá detaily dopravy (Zásilkovna/PPL) pro daný typ formuláře.
+     * Tato funkce je převzata z funkční verze index14.html a je spolehlivá.
+     */
+    window.toggleShippingDetails = function(formType) {
+        const zasilkovnaDetail = document.getElementById(`${formType}-zasilkovna-detail`);
+        const pplDetail = document.getElementById(`${formType}-ppl-detail`);
+        const selectedMethod = document.getElementById(`${formType}-shipping-method`).value;
+
+        // Skryje všechny detaily a odebere 'required' atributy
+        zasilkovnaDetail.classList.remove('active');
+        pplDetail.classList.remove('active');
+
+        const fields = [
+            document.getElementById(`${formType}-zasilkovna-city`),
+            document.getElementById(`${formType}-zasilkovna-pobocka`),
+            document.getElementById(`${formType}-ppl-city`),
+            document.getElementById(`${formType}-ppl-pobocka`)
+        ];
+        
+        fields.forEach(field => {
+            if (field) field.removeAttribute('required');
+        });
+
+        // Zobrazí správný detail a nastaví 'required' atributy
+        if (selectedMethod === 'Zasilkovna') {
+            zasilkovnaDetail.classList.add('active');
+            fields[0].setAttribute('required', 'required');
+            fields[1].setAttribute('required', 'required');
+        } else if (selectedMethod === 'PPL_Parcelshop') {
+            pplDetail.classList.add('active');
+            fields[2].setAttribute('required', 'required');
+            fields[3].setAttribute('required', 'required');
+        }
+    };
+
+    /**
+     * Plní selectbox pobočkami na základě vybraného města.
+     * Tato funkce je také z funkční verze index14.html.
+     */
+    window.populatePobocky = function(formType, service) {
+        const citySelect = document.getElementById(`${formType}-${service}-city`);
+        const pobockaSelect = document.getElementById(`${formType}-${service}-pobocka`);
+        const selectedCity = citySelect.value;
+
+        pobockaSelect.innerHTML = '<option value="">-- Nejprve vyberte město --</option>'; // Reset
+
+        if (!selectedCity) return; // Pokud není vybráno město, skončí
+
+        const pobockyData = (service === 'zasilkovna') ? zasilkovnaPobocky[selectedCity] : pplPobocky[selectedCity];
+
+        if (pobockyData && pobockyData.length > 0) {
+            pobockyData.forEach(pobocka => {
+                let option = document.createElement('option');
+                option.value = pobocka.address;
+                option.textContent = `${pobocka.name} (${pobocka.address})`;
+                pobockaSelect.appendChild(option);
+            });
+        } else {
+            pobockaSelect.innerHTML = `<option value="">-- Pro ${selectedCity} nejsou pobočky --</option>`;
+        }
+    };
+
+    /**
+     * Klíčová funkce pro přepínání tabů (záložek) formulářů.
+     * Toto je nová, opravená logika pro index21.html.
+     */
+    window.showForm = function(formId) {
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const formPanels = document.querySelectorAll('.form-panel');
+
+        // Skryje všechny panely a deaktivuje všechny taby
+        formPanels.forEach(panel => panel.classList.remove('active'));
+        tabButtons.forEach(button => button.classList.remove('active'));
+
+        // Zobrazí správný panel a aktivuje správný tab
+        document.getElementById(`${formId}-form-panel`).classList.add('active');
+        document.querySelector(`.tab-button[data-form="${formId}"]`).classList.add('active');
+
+        // VELMI DŮLEŽITÉ: Po zobrazení formuláře resetuje stav jeho dopravy
+        window.toggleShippingDetails(formId);
+    };
+
+
+    // --- KÓD, KTERÝ SE SPUSTÍ PO NAČTENÍ STRÁNKY ---
+    document.addEventListener('DOMContentLoaded', () => {
+        // Observer pro animace při scrollu (zůstává stejný)
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.2 };
+        const sectionObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${entry.target.id}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+        sections.forEach(section => sectionObserver.observe(section));
+
+        // Inicializace formuláře - vždy zobrazí formulář pro opravu jako první
+        window.showForm('repair');
+    });
+</script>
+</body>
+</html>
